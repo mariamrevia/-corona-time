@@ -14,7 +14,14 @@
             <x-error name="email" />
             <x-input name="password" id="password" type="password" />
             <x-error name="password" />
-            <x-input name="Repeat password" id="password_confirmation" type="password" />
+            <div class="flex flex-col mobile:mt-[1.5rem] mt-[1rem]">
+                <label class="font-bold"  for='password'>Repeat password</label>
+                <input
+                class="w-[21.4rem] h-[3.5rem] border rounded mt-[0.5rem]" 
+                name='password_confirmation'
+                type="password" />
+            </div>
+          
             <x-error name="password" />
             <div class="mt-[1.5rem] flex flex-row justify-between">
                 <div>
