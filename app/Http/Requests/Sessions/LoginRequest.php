@@ -5,7 +5,7 @@ namespace App\Http\Requests\Sessions;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreLoginRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
 	public function rules(): array
 	{
