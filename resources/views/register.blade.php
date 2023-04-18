@@ -9,20 +9,19 @@
         @csrf
         <div class="mt-[1rem] mobile:mt-[1.5rem] ">
             <x-input name="username" />
+            <x-error name="username" />
             <x-input name="email" />
+            <x-error name="email" />
             <x-input name="password" id="password" type="password" />
-            <x-input name="password_confirmation" id="password_confirmation" type="password" />
-            @error('password')
-                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-            @enderror
+            <x-error name="password" />
+            <x-input name="Repeat password" id="password_confirmation" type="password" />
+            <x-error name="password" />
             <div class="mt-[1.5rem] flex flex-row justify-between">
                 <div>
                     <input type="checkbox" name='remember' />
                     <label class="font-semibold text-[0.8rem]">Remember this device</label>
                 </div>
-
                 <a>Forgot password?</a>
-
             </div>
 
             <div>
@@ -37,7 +36,7 @@
 
     <div class="flex flex-row items-center mt-[1.5rem] justify-center">
         <p>already have an account?</p>
-        <a class="ml-[0.5rem] font-semibold" href="{{route('login')}}">Log In</a>
+        <a class="ml-[0.5rem] font-semibold" href="{{ route('login') }}">Log In</a>
     </div>
 
 
