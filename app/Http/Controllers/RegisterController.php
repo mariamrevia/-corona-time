@@ -13,6 +13,6 @@ class RegisterController extends Controller
 		$user = User::create($request->validated());
 
 		auth()->login($user);
-		return redirect()->route('login');
+		return redirect()->route('email.confirm');
 	}
 }

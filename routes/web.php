@@ -18,3 +18,4 @@ Route::view('/', 'login')->name('login');
 Route::post('login', [AuthController::class, 'store'])->name('login.store');
 Route::view('register', 'register')->name('register');
 Route::post('register', [RegisterController::class, 'store'])->name('register.store');
+Route::view('confirm', 'email.confirm')->name('email.confirm');

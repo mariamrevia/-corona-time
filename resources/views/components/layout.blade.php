@@ -15,7 +15,7 @@
     <div class=" flex flex-row justify-between desktop:w-[90rem] h-[56.25rem] mobile:w-[23.4rem]">
         <div class="flex flex-col mobile:ml-[6.5rem] ml-[1rem] ">
             <div class="mt-[2.635rem]">
-                <img src="/images/Group1.png" class="w-[10.6rem] h-[2.6rem]"/>
+                <img src={{asset("images/Group1.png")}} class="w-[10.6rem] h-[2.6rem]"/>
             </div>
             {{ $slot }}
         </div>
@@ -23,7 +23,7 @@
        
 
         <div>
-            <img src="/images/Rectangle1.png" class=" hidden sm:block"/>
+            <img src={{asset("images/Rectangle1.png")}} class=" hidden sm:block"/>
         </div>
         </div>
     </div>
