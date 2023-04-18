@@ -22,9 +22,9 @@
 
        
 
-        </div>
         <div>
             <img src="/images/Rectangle1.png" class=" hidden sm:block"/>
+        </div>
         </div>
     </div>
 </body>

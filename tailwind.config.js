@@ -6,7 +6,25 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    screens: {
+      'mobile': '400px',
+      'desktop': '1440px',
+    
+    },
+    colors:{
+      'green':'#0FBA68',
+      'gray':'#808189',
+    },
+    extend: {
+
+      margin:{
+        '108':'108px',
+      },
+
+      width:{
+        '343':' 343px'
+      },
+    },
   },
   plugins: [],
 }
