@@ -4,11 +4,11 @@
     </h2>
     <p class="font-normal text-[1rem] text-gray ">Welcome back! please enter your details</p>
 
-    <form action="{{ route('login.store') }}" method="POST">
+    <form action="{{ route('login') }}" method="POST">
         @csrf
         <div class="mt-[1rem] mobile:mt-[1.5rem] ">
-            <x-input name="login" />
-            <x-error name="login" />
+            <x-input name="username" />
+            <x-error name="username" />
             <x-input name="password" id="password" type="password" />
             <x-error name="password" />
             <div class="mt-[1.5rem] flex flex-row justify-between">
