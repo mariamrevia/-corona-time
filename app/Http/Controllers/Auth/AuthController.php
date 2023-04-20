@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Register\RegisterRequest;
 use App\Http\Requests\Sessions\LoginRequest;
 use App\Models\User;
+use App\Notifications\CustomVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\ValidationException;
 
@@ -37,6 +38,7 @@ class AuthController extends Controller
 	public function register(RegisterRequest $request): RedirectResponse
 	{
 		$user = User::create($request->validated());
+		$user->notify(new CustomVerifyEmail);
 		auth()->login($user);
 		return redirect()->route('email.confirm');
 	}
