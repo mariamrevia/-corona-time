@@ -6,6 +6,15 @@
 
     <form action="{{ route('login') }}" method="POST">
         @csrf
+        @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         <div class="mt-[1rem] mobile:mt-[1.5rem] ">
             <x-input name="username" />
             <x-error name="username" />
