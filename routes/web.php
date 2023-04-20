@@ -25,3 +25,7 @@ Route::view('congrats', 'email.congrats')->name('email.congrats');
 
 Route::view('/email/verify', 'email.confirm')->middleware('auth')->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
+
+
+Route::view('reset/passw', 'email.emailverify')->name('emailverify.show');
+

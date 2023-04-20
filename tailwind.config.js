@@ -9,21 +9,24 @@ module.exports = {
     screens: {
       'mobile': '400px',
       'desktop': '1440px',
-    
+
     },
-    colors:{
-      'green':'#0FBA68',
-      'gray':'#808189',
+    colors: {
+      'green': '#0FBA68',
+      'gray': '#808189',
     },
     extend: {
 
-      margin:{
-        '108':'108px',
-        
-      },
+      margin: {
+        '108': '108px',
+        '144': '144px'
 
-      width:{
-        '343':' 343px'
+      },
+      fontSize: {
+        '25': '25px'
+      },
+      width: {
+        '343': ' 343px'
       },
     },
   },
