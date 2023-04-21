@@ -5,31 +5,36 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Notifications\CustomResetPassword;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class PasswordResetController extends Controller
 {
-	public function notify(Request $request)
+	public function notify(Request $request): RedirectResponse
 	{
-		$request->validate(['email' => 'required|email']);
-		$status = Password::sendResetLink(
-			$request->only('email')
-		);
+		$attributes = $request->validate(['email' => 'required|email']);
+		$user = User::where('email', $attributes['email'])->first();
 
-		return $status === Password::RESET_LINK_SENT
-					? back()->with(['status' => __($status)])
-					: back()->withErrors(['email' => __($status)]);
+		if (!$user) {
+			return back()->withErrors(['email' => trans('error')]);
+		}
+		$token = app('auth.password.broker')->createToken($user);
+		$verificationUrl = url('/reset-password/' . $token . '?email=' . $attributes['email']);
+		$user->notify(new CustomResetPassword($verificationUrl));
+		return redirect()->route('email.confirm');
 	}
 
-	public function show(string $token, Request $request)
+	public function show(string $token, Request $request): View
 	{
 		return
 	view('reset-password', ['token' => $token, 'request' => $request]);
 	}
 
-	public function update(Request $request)
+	public function update(Request $request): RedirectResponse
 	{
 		$request->validate([
 			'token'    => 'required',

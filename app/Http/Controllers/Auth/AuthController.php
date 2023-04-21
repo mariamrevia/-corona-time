@@ -45,6 +45,6 @@ class AuthController extends Controller
 		$user->notify(new CustomVerifyEmail);
 
 		auth()->login($user);
-		return redirect()->route('email.confirm');
+		return redirect()->route('verification.notice');
 	}
 }
