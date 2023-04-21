@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PasswordRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Notifications\CustomResetPassword;
@@ -35,14 +36,9 @@ class PasswordResetController extends Controller
 	view('reset-password', ['token' => $token, 'request' => $request]);
 	}
 
-	public function update(Request $request): RedirectResponse
+	public function update(PasswordRequest $request): RedirectResponse
 	{
-		$request->validate([
-			'token'    => 'required',
-			'email'    => 'required|email',
-			'password' => 'required|confirmed',
-		]);
-
+		$request->validated();
 		$status = Password::reset(
 			$request->only('email', 'password', 'password_confirmation', 'token'),
 			function (User $user, string $password) {
