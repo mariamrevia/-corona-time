@@ -25,7 +25,7 @@
                     <input type="checkbox" />
                     <label class="font-semibold text-[0.8rem]">Remember this device</label>
                 </div>
-                <a href="{{route('emailverify.show')}}">Forgot password?</a>
+                <a href="{{route('verify.show')}}">Forgot password?</a>
             </div>
 
             <div>

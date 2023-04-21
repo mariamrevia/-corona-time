@@ -33,7 +33,7 @@ class AuthController extends Controller
 		}
 
 		session()->regenerate();
-		return redirect()->route('email.confirm');
+		return redirect()->route('confirm.show');
 	}
 
 	public function register(RegisterRequest $request): RedirectResponse

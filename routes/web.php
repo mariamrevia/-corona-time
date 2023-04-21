@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\PasswordResetController;
-use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\Auth\PasswordResetController;
+use App\Http\Controllers\Auth\EmailVerificationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,17 +17,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'login')->name('login.show');
-Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::view('register', 'register')->name('register.show');
-Route::post('register', [AuthController::class, 'register'])->name('register');
-
-Route::view('confirm', 'email.confirm')->name('email.confirm');
-Route::view('congrats', 'email.congrats')->name('email.congrats');
+Route::controller(AuthController::class)->group(function () {
+	Route::post('login', 'login')->name('login');
+	Route::post('register', 'register')->name('register');
+});
 
 Route::view('/email/verify', 'email.confirm')->middleware('auth')->name('verification.notice');
-Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
+Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
+Route::view('congrats', 'email.congrats')->name('congrats.show');
 
-Route::view('reset/passw', 'email.emailverify')->name('emailverify.show');
-Route::post('/forgot-password', [PasswordResetController::class, 'notify'])->middleware('guest')->name('password.email');
-Route::get('/reset-password/{token}', [PasswordResetController::class, 'show'])->middleware('guest')->name('password.reset');
-Route::post('/reset-password', [PasswordResetController::class, 'update'])->middleware('guest')->name('password.update');
+Route::view('reset/passw', 'email.verify')->name('verify.show');
+Route::view('confirm', 'email.confirm')->name('confirm.show');
+Route::controller(PasswordResetController::class)->middleware('guest')->group(function () {
+	Route::post('/forgot-password', 'notify')->name('password.email');
+	Route::get('/reset-password/{token}', 'showResetForm')->name('password.reset');
+	Route::post('/reset-password', 'update')->name('password.update');
+});

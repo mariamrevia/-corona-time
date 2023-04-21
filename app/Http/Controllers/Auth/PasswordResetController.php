@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Support\Facades\Password;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Notifications\CustomResetPassword;
@@ -25,10 +26,10 @@ class PasswordResetController extends Controller
 		$token = app('auth.password.broker')->createToken($user);
 		$verificationUrl = url('/reset-password/' . $token . '?email=' . $attributes['email']);
 		$user->notify(new CustomResetPassword($verificationUrl));
-		return redirect()->route('email.confirm');
+		return redirect()->route('confirm.show');
 	}
 
-	public function show(string $token, Request $request): View
+	public function showResetForm(string $token, Request $request): View
 	{
 		return
 	view('reset-password', ['token' => $token, 'request' => $request]);
