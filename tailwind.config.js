@@ -14,6 +14,8 @@ module.exports = {
     colors: {
       'green': '#0FBA68',
       'gray': '#808189',
+      'yellow':'#EAD621',
+      'blue':'#2029F3',
     },
     extend: {
 
@@ -27,6 +29,9 @@ module.exports = {
       },
       width: {
         '343': ' 343px'
+      },
+      opacity:{
+        '0.08':'0.08'
       },
     },
   },
