@@ -24,7 +24,7 @@ Route::controller(AuthController::class)->group(function () {
 	Route::post('register', 'register')->name('register');
 });
 
-Route::view('dashboard/worldwide', 'dashboard.worldwide')->name('worldwide.show')->middleware(['auth', 'verified']);
+Route::get('dashboard/worldwide', [StatisticsController::class, 'showWorldwide'])->name('worldwide.show')->middleware(['auth', 'verified']);
 Route::get('dashboard/byCountry', [StatisticsController::class, 'showStatistics'])->name('statistics.show');
 
 Route::view('/email/verify', 'email.confirm')->middleware('auth')->name('verification.notice');

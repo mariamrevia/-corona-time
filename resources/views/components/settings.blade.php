@@ -12,7 +12,7 @@
                 class="{{ request()->is('dashboard/worldwide') ? 'font-bold' : '' }}">Worldwide</a>
                 '
                 <a href="{{route('statistics.show')}}"
-                class="{{ request()->is('dashboard/byCountry') ? 'font-bold' : '' }}""
+                class="{{ request()->is('dashboard/byCountry') ? 'font-bold' : '' }}"
                 >By Country</a>
                 
             </div>

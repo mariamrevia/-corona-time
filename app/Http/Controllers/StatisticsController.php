@@ -15,7 +15,28 @@ class StatisticsController extends Controller
 			'dashboard.covidstatistics',
 			[
 				'statistics' => $statistics,
-			]
+				'totals'     => $this->SumData(),
+			],
 		);
+	}
+
+	public function showWorldwide()
+	{
+		return view('dashboard.worldwide', [
+			'totals'     => $this->SumData(),
+		]);
+	}
+
+	private function SumData()
+	{
+		$totalDeaths = CovidStatistics::sum('deaths');
+		$totalConfirmed = CovidStatistics::sum('confirmed');
+		$totalRecovered = CovidStatistics::sum('recovered');
+
+		return [
+			'totalDeaths'    => $totalDeaths,
+			'totalConfirmed' => $totalConfirmed,
+			'totalRecovered' => $totalRecovered,
+		];
 	}
 }
