@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PasswordRequest;
+use App\Http\Requests\ResetPasswordRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Notifications\CustomResetPassword;
+use App\Notifications\ResetPasswordNotification;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -26,7 +26,7 @@ class PasswordResetController extends Controller
 		}
 		$token = app('auth.password.broker')->createToken($user);
 		$verificationUrl = url('/reset-password/' . $token . '?email=' . $attributes['email']);
-		$user->notify(new CustomResetPassword($verificationUrl));
+		$user->notify(new ResetPasswordNotification($verificationUrl));
 		return redirect()->route('confirm.show');
 	}
 
@@ -36,7 +36,7 @@ class PasswordResetController extends Controller
 	view('reset-password', ['token' => $token, 'request' => $request]);
 	}
 
-	public function update(PasswordRequest $request): RedirectResponse
+	public function update(ResetPasswordRequest $request): RedirectResponse
 	{
 		$request->validated();
 		$status = Password::reset(

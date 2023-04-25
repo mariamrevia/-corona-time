@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Register\RegisterRequest;
 use App\Http\Requests\Sessions\LoginRequest;
 use App\Models\User;
-use App\Notifications\CustomVerifyEmail;
+use App\Notifications\VerifyEmailNotification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
@@ -42,7 +42,7 @@ class AuthController extends Controller
 		$validatedData['password'] = Hash::make($validatedData['password']);
 		$user = User::create($validatedData);
 
-		$user->notify(new CustomVerifyEmail);
+		$user->notify(new VerifyEmailNotification);
 
 		auth()->login($user);
 		return redirect()->route('verification.notice');
