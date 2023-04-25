@@ -12,10 +12,12 @@ module.exports = {
 
     },
     colors: {
-      'green': '#0FBA68',
+      'lightGr':'#F6F6F7',
+      'green': 'rgba(15, 186, 104, 0.08);',
       'gray': '#808189',
-      'yellow':'#EAD621',
-      'blue':'#2029F3',
+      'yellow':'rgba(234, 214, 33, 0.08)',
+      'blue':'rgba(32, 41, 243, 0.08)',
+      
     },
     extend: {
 

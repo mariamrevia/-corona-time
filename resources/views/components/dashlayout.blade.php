@@ -38,7 +38,7 @@
 
     
 </div>
-<div class=" bg-lightGr mt-[1rem] h-0.5  w-[23rem] mobile:w-[90rem]"></div>
+<div class=" bg-lightGr mt-[1rem] h-0.5  w-[24rem] mobile:w-[90rem]"></div>
 
 {{$slot}}
 
