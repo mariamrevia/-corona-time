@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\EmailVerificationController;
+use App\Http\Controllers\StatisticsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,7 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::view('dashboard/worldwide', 'dashboard.worldwide')->name('worldwide.show')->middleware(['auth', 'verified']);
+Route::get('dashboard/byCountry', [StatisticsController::class, 'showStatistics'])->name('statistics.show');
 
 Route::view('/email/verify', 'email.confirm')->middleware('auth')->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
