@@ -26,7 +26,8 @@ class AuthController extends Controller
 			]);
 		}
 
-		if (!auth()->attempt($request->validated())) {
+		$attributes = $request->validated();
+		if (!auth()->attempt(['email' => $user->email, 'password' => $attributes['password']])) {
 			throw ValidationException::withMessages([
 				'email' => 'The provided credentials are incorrect.',
 			]);
