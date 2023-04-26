@@ -9,8 +9,8 @@
             <input type="hidden" name="token" value="{{$request->route('token') }}" >
             <input type="hidden" name="email"  value="{{$_REQUEST['email']}}">
             
-            <x-input name="password" type="password" :text="__("passreset.New_Pass")"/>
             <div>
+                <x-input name="password" type="password" :text="__('passreset.New_Pass')"/>
                 <div class="flex flex-col mobile:mt-[1.5rem] mt-[1rem]">
                     <label class="font-bold"  for='password'>{{__('passreset.Repeat_Pass')}}</label>
                     <input

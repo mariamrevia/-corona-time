@@ -10,4 +10,5 @@ return [
 	'New_cases'=> 'New Cases',
 	'Deaths'   => 'Deaths',
 	'Recovered'=> 'Recovered',
+	'Total'    => 'Total',
 ];

@@ -6,16 +6,14 @@
                 value="{{ request('search') }}">
         </form>
 
-        <div class="flex flex-row relative max-h-[37rem] mt-[2.5rem] w-375">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <div class="flex flex-row relative max-h-[37rem] mt-[2.5rem]  ">
+            <table class="w-full text-xs text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
-                    <tr class="">
+                    <tr class="text-[18px]">
                         <th scope="col" class="px-2 flex flex-row mt-[0.8rem] items-start">
                             <div class="flex flex-row">
-
                                 <h2>{{__('dashboard.Country')}}</h2>
                                 <x-sorting name="name" />
-
                             </div>
                         </th>
                         <th scope="col" class="px-2 py-2">
@@ -37,12 +35,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row"
-                            class="px-2 py-4 white-space: pre-wrap font-medium text-gray-900  whitespace-nowrap dark:text-white">
-                            Total
+                    <tr class="bg-white text-[20px] border-b dark:bg-gray-800 dark:border-gray-700">
+                        <th scope="row text-xl "
+                            class="px-2 py-4 white-space: pre-wrap font-medium text-gray-900   dark:text-white">
+                            {{__('dashboard.Total')}}
                         </th>
-                        <td class="px-2 py-4">
+                        <td class="px-2 py-4 ">
                             {{ number_format($totals['totalConfirmed']) }}
                         </td>
                         <td class="px-2 py-4">
@@ -53,10 +51,10 @@
                         </td>
                     </tr>
                     @foreach ($statistics as $statistic)
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr class=" text-[20px] whitespace-wrap bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row"
-                                class="px-2 py-4 white-space: pre-wrap font-medium text-gray-900  whitespace-nowrap dark:text-white">
-                                {{ json_decode($statistic->country, true)['en'] }}
+                                class="px-2 py-4 white-space: pre-wrap font-medium text-gray-900   dark:text-white">
+                                 {{$statistic->getTranslation('country', session('locale', 'en')) }}
                             </th>
                             <td class="px-2 py-4">
                                 {{ number_format($statistic->confirmed) }}
@@ -74,3 +72,5 @@
         </div>
     </x-settings>
 </x-dashlayout>
+
+
