@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Mail\Message;
 use Illuminate\Queue\SerializesModels;
 
-class ConfirmMail extends Mailable
+class EmailConfirmMail extends Mailable
 {
 	use Queueable, SerializesModels;
 
@@ -36,7 +36,7 @@ class ConfirmMail extends Mailable
 	/**
 	 * Get the message content definition.
 	 */
-	public function build(): ConfirmMail
+	public function build(): EmailConfirmMail
 	{
 		return
 		$this->markdown('emailnotification.confirmmail')

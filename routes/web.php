@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\EmailVerificationController;
+use App\Http\Controllers\StatisticController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,11 @@ Route::view('register', 'register')->name('register.show');
 Route::controller(AuthController::class)->group(function () {
 	Route::post('login', 'login')->name('login');
 	Route::post('register', 'register')->name('register');
+});
+
+Route::prefix('dashboard')->controller(StatisticController::class)->middleware(['auth', 'verified'])->group(function () {
+	Route::get('worldwide', 'showWorldwide')->name('worldwide.show');
+	Route::get('byCountry', 'showStatistics')->name('statistics.show');
 });
 
 Route::view('/email/verify', 'email.confirm')->middleware('auth')->name('verification.notice');

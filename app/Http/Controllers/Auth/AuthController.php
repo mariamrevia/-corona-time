@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Register\RegisterRequest;
 use App\Http\Requests\Sessions\LoginRequest;
 use App\Models\User;
-use App\Notifications\CustomVerifyEmail;
+use App\Notifications\VerifyEmailNotification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
@@ -26,14 +26,15 @@ class AuthController extends Controller
 			]);
 		}
 
-		if (!auth()->attempt($request->validated())) {
+		$attributes = $request->validated();
+		if (!auth()->attempt(['email' => $user->email, 'password' => $attributes['password']])) {
 			throw ValidationException::withMessages([
 				'email' => 'The provided credentials are incorrect.',
 			]);
 		}
 
 		session()->regenerate();
-		return redirect()->route('confirm.show');
+		return redirect()->route('worldwide.show');
 	}
 
 	public function register(RegisterRequest $request): RedirectResponse
@@ -42,7 +43,7 @@ class AuthController extends Controller
 		$validatedData['password'] = Hash::make($validatedData['password']);
 		$user = User::create($validatedData);
 
-		$user->notify(new CustomVerifyEmail);
+		$user->notify(new VerifyEmailNotification);
 
 		auth()->login($user);
 		return redirect()->route('verification.notice');

@@ -2,21 +2,23 @@
 
 namespace App\Notifications;
 
-use App\Mail\ConfirmMail;
-use Illuminate\Auth\Notifications\VerifyEmail;
+use App\Mail\ResetPasswordMail;
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Notifications\Notification;
 
-class CustomVerifyEmail extends VerifyEmail
+class ResetPasswordNotification extends ResetPassword
 {
 	use Queueable;
 
 	/**
 	 * Create a new notification instance.
 	 */
-	public function __construct()
+	public $verificationUrl;
+
+	public function __construct(string $verificationUrl)
 	{
+		$this->verificationUrl = $verificationUrl;
 	}
 
 	/**
@@ -32,11 +34,11 @@ class CustomVerifyEmail extends VerifyEmail
 	/**
 	 * Get the mail representation of the notification.
 	 */
-	public function toMail($notifiable): ConfirmMail
+	public function toMail($notifiable): ResetPasswordMail
 	{
-	
-		$verificationUrl = $this->verificationUrl($notifiable);
-		return (new ConfirmMail($verificationUrl))->to($notifiable);
+		return (new ResetPasswordMail($this->verificationUrl))
+		->to($notifiable->email)
+		->withVerificationUrl($this->verificationUrl);
 	}
 
 	/**
