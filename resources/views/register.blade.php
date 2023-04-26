@@ -1,13 +1,13 @@
 <x-layout>
-
     <h2 class="mobile:mt-[3.5rem] mt-[2.5rem] text-black text-[1.25rem] font-black">
         {{__('register.Welcome')}}
     </h2>
     <p class="font-normal text-[1rem] text-gray ">{{__('register.paragraph')}}</p>
 
+
     <form action="{{ route('register') }}" method="POST">
         @csrf
-        <div class="mt-[1rem] mobile:mt-[1.5rem] ">
+        <div class="mt-[1rem] mobile:mt-[1.5rem] w-[21.4rem]">
             <x-input name="username" :text="__('register.Username')" :placeholder="__('register.Username_Ph')"/>
             <x-error name="username" />
             <x-input name="email" :text="__('register.Email')" :placeholder="__('register.Email_ph')"/>

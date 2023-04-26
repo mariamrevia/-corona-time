@@ -32,10 +32,13 @@ Route::prefix('dashboard')->controller(StatisticController::class)->middleware([
 
 Route::view('/email/verify', 'email.confirm')->middleware('auth')->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->middleware(['auth', 'signed'])->name('verification.verify');
-Route::view('congrats', 'email.congrats')->name('congrats.show');
 
-Route::view('reset/passw', 'email.verify')->name('verify.show');
-Route::view('confirm', 'email.confirm')->name('confirm.show');
+Route::middleware('guest')->group(function () {
+	Route::view('congrats', 'email.congrats')->name('congrats.show');
+	Route::view('reset/passw', 'email.verify')->name('verify.show');
+	Route::view('confirm', 'email.confirm')->name('confirm.show');
+});
+
 Route::controller(PasswordResetController::class)->middleware('guest')->group(function () {
 	Route::post('/forgot-password', 'notify')->name('password.email');
 	Route::get('/reset-password/{token}', 'showResetForm')->name('password.reset');
