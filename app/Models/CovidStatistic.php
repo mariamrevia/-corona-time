@@ -27,24 +27,15 @@ class CovidStatistic extends Model
 			$sort = request('sort', 'name');
 			$order = request('order', 'asc');
 
-			switch ($sort) {
-				case 'name':
-					$query->orderByRaw("JSON_EXTRACT(country, '$.en') $order");
-					break;
-				case 'deaths':
-					$query->orderBy('deaths', $order);
+			$column = [
+				'name'      => "JSON_EXTRACT(country, '$.en')",
+				'deaths'    => 'deaths',
+				'recovered' => 'recovered',
+				'confirmed' => 'confirmed',
+			];
 
-					break;
-				case 'recovered':
-					$query->orderBy('recovered', $order);
-
-					break;
-				case 'confirmed':
-					$query->orderBy('confirmed', $order);
-
-					break;
-				default:
-					break;
+			if (isset($column[$sort])) {
+				$query->orderByRaw("{$column[$sort]} $order");
 			}
 		});
 
