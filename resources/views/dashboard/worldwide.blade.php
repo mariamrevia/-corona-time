@@ -1,5 +1,5 @@
 <x-dashlayout>
-    <x-settings heading="Worldwide Statistics">
+    <x-settings :heading="__('dashboard.Heading_W')">
         <div class="flex flex-col md:flex-row mobile:w-[76.3rem] mt-10 gap-[1.5rem]">
                 <div class="flex  justify-center mobile:w-[24.5rem] mobile:h-[16rem] w-[23rem] h-[12rem] m-0 bg-blueO shadow-stone-400 border rounded-lg ">
                     <div class=" flex flex-col  align-middle mt-[24px] mobile:mt-[40px]">

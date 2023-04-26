@@ -1,7 +1,7 @@
 <x-dashlayout>
-    <x-settings heading="Statistics by country">
+    <x-settings :heading="__('dashboard.Heading_C')">
         <form method="GET" action="#" class="mt-[2.5rem]">
-            <input type="text" name="search" placeholder="Search by country"
+            <input type="text" name="search" placeholder="{{__('dashboard.Search_Ph')}}"
                 class="w-[15rem] h-[3.5rem] border rounded mt-[0.5rem] bg-transparent font-semibold text-sm"
                 value="{{ request('search') }}">
         </form>
@@ -13,25 +13,25 @@
                         <th scope="col" class="px-2 flex flex-row mt-[0.8rem] items-start">
                             <div class="flex flex-row">
 
-                                <h2>Country</h2>
+                                <h2>{{__('dashboard.Country')}}</h2>
                                 <x-sorting name="name" />
 
                             </div>
                         </th>
                         <th scope="col" class="px-2 py-2">
                             <div class="flex flex-row items-center">
-                                <span class="mr-1">New Cases</span>
+                                <span class="mr-1">{{__('dashboard.New_cases')}}</span>
                                 <x-sorting name="confirmed" />
                             </div>
                         </th>
                         <th scope="col" class="px-2 py-2 ">
                             <div class="flex flex-row items-center">
-                                <span class="mr-1">Deaths</span>
+                                <span class="mr-1">{{__('dashboard.Deaths')}}</span>
                                 <x-sorting name="deaths" />
                             </div>
                         </th>
                         <th scope="col" class="px-2 py-3 flex flex-row">
-                            Recovered
+                            {{__('dashboard.Recovered')}}
                             <x-sorting name="recovered" />
                         </th>
                     </tr>

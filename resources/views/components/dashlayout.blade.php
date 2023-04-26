@@ -26,7 +26,7 @@
 
         <div class="hidden mobile:block">
 
-            <h2 >mariam</h2>
+            <h2>mariam</h2>
             
             <form method="POST" action="">
                 @csrf

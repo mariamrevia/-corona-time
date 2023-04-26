@@ -9,11 +9,11 @@
         <aside class="w-48 flex-shrink-0"> 
             <div>
                 <a href="{{route('worldwide.show')}}"
-                class="{{ request()->is('dashboard/worldwide') ? 'font-bold' : '' }}">Worldwide</a>
+                class="{{ request()->is('dashboard/worldwide') ? 'font-bold' : '' }}">{{__('dashboard.Worldwide')}}</a>
                 '
                 <a href="{{route('statistics.show')}}"
                 class="{{ request()->is('dashboard/byCountry') ? 'font-bold' : '' }}"
-                >By Country</a>
+                >{{__('dashboard.ByCountry')}}</a>
                 
             </div>
         </aside>
