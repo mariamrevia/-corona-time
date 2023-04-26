@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\EmailVerificationController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\StatisticController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::post('/languages/{locale}', [LanguageController::class, 'langSwitch'])->name('languages.switch');
 Route::view('/', 'login')->name('login.show');
 Route::view('register', 'register')->name('register.show');
 Route::controller(AuthController::class)->group(function () {

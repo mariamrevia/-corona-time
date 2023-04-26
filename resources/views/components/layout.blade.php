@@ -19,8 +19,21 @@
             </div>
             {{ $slot }}
         </div>
-
-       
+        
+            @php
+                $locale = session('locale', 'en');
+            @endphp
+            <div class="mt-[3rem]">
+                <form method="POST" action="{{ route('languages.switch', $locale) }}">
+                    @csrf
+                    <select name="locale" onchange="this.form.submit()">
+                        <option value="en" {{ $locale === 'en' ? 'selected' : '' }}>English</option>
+                        <option value="ka" {{ $locale === 'ka' ? 'selected' : '' }}>Georgian</option>
+                    </select>
+                </form>
+    
+            </div>
+           
 
         <div>
             <img src={{asset("images/Rectangle1.png")}} class=" hidden sm:block"/>
