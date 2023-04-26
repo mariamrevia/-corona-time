@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CovidStatistics;
+use App\Models\CovidStatistic;
 
-class StatisticsController extends Controller
+class StatisticController extends Controller
 {
-	public function showStatistics(CovidStatistics $statistics)
+	public function showStatistics(CovidStatistic $statistics)
 	{
-		$statistics = CovidStatistics::filter(
+		$statistics = CovidStatistic::filter(
 			request(['search', 'sort'])
 		)->get();
 		return view(
@@ -29,9 +29,9 @@ class StatisticsController extends Controller
 
 	private function SumData()
 	{
-		$totalDeaths = CovidStatistics::sum('deaths');
-		$totalConfirmed = CovidStatistics::sum('confirmed');
-		$totalRecovered = CovidStatistics::sum('recovered');
+		$totalDeaths = CovidStatistic::sum('deaths');
+		$totalConfirmed = CovidStatistic::sum('confirmed');
+		$totalRecovered = CovidStatistic::sum('recovered');
 
 		return [
 			'totalDeaths'    => $totalDeaths,

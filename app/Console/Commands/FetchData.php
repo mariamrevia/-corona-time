@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\CovidStatistics;
+use App\Models\CovidStatistic;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
@@ -41,7 +41,7 @@ class FetchData extends Command
 			$stats = $response->json();
 			// $results[$code] = $stats;
 
-			CovidStatistics::updateOrCreate(
+			CovidStatistic::updateOrCreate(
 				['code' => $country['code']],
 				[
 					'country'      => json_encode([

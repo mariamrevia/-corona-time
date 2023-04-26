@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CovidStatistics extends Model
+class CovidStatistic extends Model
 {
 	use HasFactory;
 
@@ -23,7 +23,7 @@ class CovidStatistics extends Model
 			}
 		);
 
-		$query->when($filters['sort'] ?? false, function ($query, $sort) use ($filters) {
+		$query->when($filters['sort'] ?? false, function ($query, $sort) {
 			$sort = request('sort', 'name');
 			$order = request('order', 'asc');
 
