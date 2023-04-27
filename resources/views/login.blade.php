@@ -6,25 +6,15 @@
 
     <form action="{{ route('login') }}" method="POST">
         @csrf
-        @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+     
         <div class="mt-[1rem] mobile:mt-[1.5rem] ">
             <x-input name="username" :text="__('login.Username')" :placeholder="__('login.Username_Placeholder')"/>
-            <x-error name="username" />
             <x-input name="password" :text="__('login.Password')" :placeholder="__('login.Password_Placeholder')" 
             id="password"
             type="password" />
-            <x-error name="password" />
             <div class="mt-[1.5rem] flex flex-row justify-between">
                 <div>
-                    <input type="checkbox" name='remember' />
+                    <input type="checkbox"  name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} />
                     <label class="font-semibold text-[0.8rem]">{{__('login.Remember')}}</label>
                 </div>
                 <a href="{{route('verify.show')}}">{{__('login.Forget_Pass')}}</a>

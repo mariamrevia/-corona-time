@@ -181,8 +181,8 @@ return [
 	*/
 
 	'attributes' => [
-		'username' => 'მომხმარებლის სახელი',
-		'email'    => 'ელ-ფოსტა',
-		'password' => 'პაროლი',
+		'username' => 'username',
+		'email'    => 'email',
+		'password' => 'password',
 	],
 ];
