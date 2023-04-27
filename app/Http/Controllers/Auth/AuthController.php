@@ -22,14 +22,14 @@ class AuthController extends Controller
 
 		if (!$user) {
 			throw ValidationException::withMessages([
-				'email' => 'The username must be a valid email address or username.',
+				'username' => trans('validation.valid-username'),
 			]);
 		}
 
 		$attributes = $request->validated();
 		if (!auth()->attempt(['email' => $user->email, 'password' => $attributes['password']])) {
 			throw ValidationException::withMessages([
-				'email' => 'The provided credentials are incorrect.',
+				'email' => trans('validation.email'),
 			]);
 		}
 

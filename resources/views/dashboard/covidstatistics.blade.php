@@ -6,10 +6,7 @@
                 value="{{ request('search') }}">
         </form>
 
-      
             <div class="mobile:overflow-y-scroll scrollbar scrollbar-thumb-darkGray scrollbar-thumb-rounded-md scrollbar-w-[6px] scrollbar-h-[50px]  flex flex-row relative max-h-[37rem] mt-[2.5rem]  ">
-              
-                
                 <table class=" w-full text-xs text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
                         <tr class="text-[18px]">
