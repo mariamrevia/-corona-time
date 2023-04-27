@@ -1,43 +1,35 @@
 <x-layout>
     <h2 class="mobile:mt-[3.5rem] mt-[2.5rem] text-black text-[1.25rem] font-black">
-        Welcome to Coronatime
+      {{__('login.Welcome')}}
     </h2>
-    <p class="font-normal text-[1rem] text-gray ">Welcome back! please enter your details</p>
+    <p class="font-normal text-[1rem] text-gray ">{{__('login.Paragraph')}}</p>
 
     <form action="{{ route('login') }}" method="POST">
         @csrf
-        @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+     
         <div class="mt-[1rem] mobile:mt-[1.5rem] ">
-            <x-input name="username" />
-            <x-error name="username" />
-            <x-input name="password" id="password" type="password" />
-            <x-error name="password" />
+            <x-input name="username" :text="__('login.Username')" :placeholder="__('login.Username_Placeholder')"/>
+            <x-input name="password" :text="__('login.Password')" :placeholder="__('login.Password_Placeholder')" 
+            id="password"
+            type="password" />
             <div class="mt-[1.5rem] flex flex-row justify-between">
                 <div>
-                    <input type="checkbox" />
-                    <label class="font-semibold text-[0.8rem]">Remember this device</label>
+                    <input type="checkbox"  name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} />
+                    <label class="font-semibold text-[0.8rem]">{{__('login.Remember')}}</label>
                 </div>
-                <a href="{{route('verify.show')}}">Forgot password?</a>
+                <a href="{{route('verify.show')}}">{{__('login.Forget_Pass')}}</a>
             </div>
 
             <div>
                 <button type="submit"
                     class="w-[21.4rem] h-[3rem] bg-green mt-[1.5rem] border rounded-md text-white font-black">
-                    LOG IN</button>
+                    {{__('login.Log_In')}}</button>
 
             </div>
     </form>
     <div class="flex flex-row items-center mt-[1.5rem] justify-center">
-        <p>Don’t have and account? </p>
-        <a class="ml-[0.5rem] font-semibold" href="{{ route('register') }}">Sign up for free</a>
+        <p>{{__('login.Account_Q')}} </p>
+        <a class="ml-[0.5rem] font-semibold" href="{{ route('register') }}">{{__('login.Sign_Up')}}</a>
     </div>
     </div>
 </x-layout>

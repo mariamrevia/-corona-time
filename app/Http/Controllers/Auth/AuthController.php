@@ -22,19 +22,25 @@ class AuthController extends Controller
 
 		if (!$user) {
 			throw ValidationException::withMessages([
-				'email' => 'The username must be a valid email address or username.',
+				'username' => trans('validation.valid-username'),
 			]);
 		}
 
 		$attributes = $request->validated();
-		if (!auth()->attempt(['email' => $user->email, 'password' => $attributes['password']])) {
+		if (!auth()->attempt(['email' => $user->email, 'password' => $attributes['password']], $request->remember)) {
 			throw ValidationException::withMessages([
-				'email' => 'The provided credentials are incorrect.',
+				'email' => trans('validation.email'),
 			]);
 		}
 
 		session()->regenerate();
 		return redirect()->route('worldwide.show');
+	}
+
+	public function destroy()
+	{
+		auth()->logout();
+		return redirect()->route('login.show');
 	}
 
 	public function register(RegisterRequest $request): RedirectResponse

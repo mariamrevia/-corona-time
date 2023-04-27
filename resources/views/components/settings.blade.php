@@ -1,19 +1,19 @@
 
-<section class="mobile:mt-10 mt-[1.5rem] ml-[1rem] mobile:ml-108 flex flex-col">
+<section class="mobile:mt-10 mt-[1.5rem] ml-[1rem]  mobile:ml-108 flex flex-col">
 
-    <h1 class=" font-bold mb-8 h-30 w-[16rem] text-[1.6rem]">
+    <h1 class=" font-bold mb-8 h-30 w-[20rem] text-[1.6rem]">
         {{ $heading }}
     </h1>
     
     <div class="flex flex-col">
         <aside class="w-48 flex-shrink-0"> 
-            <div>
+            <div class="w-[22rem]">
                 <a href="{{route('worldwide.show')}}"
-                class="{{ request()->is('dashboard/worldwide') ? 'font-bold' : '' }}">Worldwide</a>
+                class="{{ request()->is('dashboard/worldwide') ? 'font-bold' : '' }}">{{__('dashboard.Worldwide')}}</a>
                 '
                 <a href="{{route('statistics.show')}}"
                 class="{{ request()->is('dashboard/byCountry') ? 'font-bold' : '' }}"
-                >By Country</a>
+                >{{__('dashboard.ByCountry')}}</a>
                 
             </div>
         </aside>
