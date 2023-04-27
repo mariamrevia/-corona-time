@@ -75,9 +75,7 @@
            
     </x-settings>
     <x-slot name="username">
-        @foreach ($user as $user)
-        {{($user->username)}}   
-        @endforeach
+        {{ auth()->user()->username }}
     </x-slot>
 </x-dashlayout>
 
