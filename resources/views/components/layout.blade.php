@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div class=" flex flex-row justify-between desktop:w-[90rem] h-[56.25rem] mobile:w-[23.4rem]">
+    <div class=" flex flex-row justify-between desktop:w-[90rem] h-full mobile:w-[23.4rem]">
         <div class="flex flex-col mobile:ml-[6.5rem] ml-[1rem] w-[21.4rem]">
             <div class="flex flex-row justify-between">
 
@@ -39,7 +39,7 @@
            
 
         <div>
-            <img src={{asset("images/Rectangle1.png")}} class=" hidden sm:block"/>
+            <img src={{asset("images/Rectangle1.png")}} class=" hidden sm:block h-full"/>
         </div>
         </div>
     </div>

@@ -27,7 +27,7 @@ class AuthController extends Controller
 		}
 
 		$attributes = $request->validated();
-		if (!auth()->attempt(['email' => $user->email, 'password' => $attributes['password']])) {
+		if (!auth()->attempt(['email' => $user->email, 'password' => $attributes['password'], $request->remember])) {
 			throw ValidationException::withMessages([
 				'email' => trans('validation.email'),
 			]);
