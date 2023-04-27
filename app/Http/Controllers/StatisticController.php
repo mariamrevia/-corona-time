@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CovidStatistic;
+use App\Models\User;
 
 class StatisticController extends Controller
 {
@@ -16,6 +17,7 @@ class StatisticController extends Controller
 			[
 				'statistics' => $statistics,
 				'totals'     => $this->SumData(),
+				'user'       => User::all(),
 			],
 		);
 	}
@@ -24,6 +26,7 @@ class StatisticController extends Controller
 	{
 		return view('dashboard.worldwide', [
 			'totals'     => $this->SumData(),
+			'user'       => User::all(),
 		]);
 	}
 

@@ -74,6 +74,11 @@
            
            
     </x-settings>
+    <x-slot name="username">
+        @foreach ($user as $user)
+        {{($user->username)}}   
+        @endforeach
+    </x-slot>
 </x-dashlayout>
 
 

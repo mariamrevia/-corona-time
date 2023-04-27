@@ -27,7 +27,7 @@ class AuthController extends Controller
 		}
 
 		$attributes = $request->validated();
-		if (!auth()->attempt(['email' => $user->email, 'password' => $attributes['password'], $request->remember])) {
+		if (!auth()->attempt(['email' => $user->email, 'password' => $attributes['password']], $request->remember)) {
 			throw ValidationException::withMessages([
 				'email' => trans('validation.email'),
 			]);
@@ -35,6 +35,12 @@ class AuthController extends Controller
 
 		session()->regenerate();
 		return redirect()->route('worldwide.show');
+	}
+
+	public function destroy()
+	{
+		auth()->logout();
+		return redirect()->route('login.show');
 	}
 
 	public function register(RegisterRequest $request): RedirectResponse

@@ -23,6 +23,7 @@ Route::view('register', 'register')->name('register.show');
 Route::controller(AuthController::class)->group(function () {
 	Route::post('login', 'login')->name('login');
 	Route::post('register', 'register')->name('register');
+	Route::post('logout', 'destroy')->name('logout');
 });
 
 Route::prefix('dashboard')->controller(StatisticController::class)->middleware(['auth', 'verified'])->group(function () {
