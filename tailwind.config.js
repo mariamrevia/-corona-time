@@ -18,6 +18,7 @@ module.exports = {
       'yellowO':'rgba(234, 214, 33, 0.08)',
       'blueO':'rgba(32, 41, 243, 0.08)',
       'green':"#0FBA68",
+      'darkGray':"#808189",
 
       'blue':"#2029F3",
       'yellow':' #EAD621'
@@ -42,5 +43,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar')({ nocompatible: true }),
+  ],
 }
