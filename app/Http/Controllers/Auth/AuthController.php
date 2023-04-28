@@ -16,20 +16,22 @@ class AuthController extends Controller
 	public function login(LoginRequest $request): RedirectResponse
 	{
 		$value = $request->validated()['username'];
-		$user = User::where('email', $value)
-					->orWhere('username', $value)
-					->first();
+		$user = User::where(function ($query) use ($value) {
+			$query->where('email', $value)
+				  ->orWhere('username', $value);
+		})->first();
 
 		if (!$user) {
 			throw ValidationException::withMessages([
-				'username' => trans('validation.valid-username'),
+				'username' => [trans('validation.valid-username')],
 			]);
 		}
 
 		$attributes = $request->validated();
+
 		if (!auth()->attempt(['email' => $user->email, 'password' => $attributes['password']], $request->remember)) {
 			throw ValidationException::withMessages([
-				'email' => trans('validation.email'),
+				'username' => trans('validation.email'),
 			]);
 		}
 
