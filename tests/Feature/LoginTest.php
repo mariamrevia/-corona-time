@@ -81,6 +81,25 @@ class LoginTest extends TestCase
 		}
 	}
 
+	public function test_login_should_allow_both_email_and_username_for_username_field()
+	{
+		$user = User::factory()->create([
+			'email'    => 'mariam@test.com',
+			'username' => 'mariam',
+			'password' => bcrypt('password123'),
+		]);
+		$response = $this->post(route('login'), [
+			'username' => $user->email,
+			'password' => 'password123',
+		]);
+		$response->assertRedirect(route('worldwide.show'));
+		$response = $this->post(route('login'), [
+			'username' => $user->username,
+			'password' => 'password123',
+		]);
+		$response->assertRedirect(route('worldwide.show'));
+	}
+
 	public function test_login_should_redirect_us_to_dashboard_worldwide_page_after_successful_login()
 	{
 		$username = 'mariam@test.com';
