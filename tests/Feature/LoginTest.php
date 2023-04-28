@@ -15,7 +15,7 @@ class LoginTest extends TestCase
 
 	public function test_login_page_is_accessible()
 	{
-		$response = $this->get('/');
+		$response = $this->get(route('login.show'));
 		$response->assertSuccessful();
 		$response->assertSee('Welcome Back');
 	}
@@ -55,22 +55,30 @@ class LoginTest extends TestCase
 				'password'    => bcrypt('password123'),
 			]);
 
-			$response = $this->post('/login', [
+			$response = $this->post(route('login'), [
 				'username' => 'mar',
 				'password' => bcrypt('password123'),
 			]);
 
-			$response->assertSessionHasErrors('username');
+			$response->assertSessionHasErrors(['username'=>trans('validation.valid-username')]);
 		}
 	}
 
-	public function test_login_should_give_us_credential_error_if_such_user_does_not_exists()
+	public function test_login_should_give_us_credential_error_if_password_is_not_correct()
 	{
-		$response = $this->post(route('login'), [
-			'username' => 'maro',
-			'password' => 'password',
-		]);
-		$response->assertSessionHasErrors(['username' => trans('validation.valid-username')]);
+		{
+			User::factory()->create([
+				'username'    => 'mariam@test.com',
+				'password'    => bcrypt('password123'),
+			]);
+
+			$response = $this->post('/login', [
+				'username' => 'mariam@test.com',
+				'password' => bcrypt('password'),
+			]);
+
+			$response->assertSessionHasErrors(['username' => trans('validation.email')]);
+		}
 	}
 
 	public function test_login_should_redirect_us_to_dashboard_worldwide_page_after_successful_login()
