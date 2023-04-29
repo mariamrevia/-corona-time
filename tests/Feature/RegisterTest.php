@@ -106,7 +106,7 @@ class RegisterTest extends TestCase
 		];
 
 		$response = $this->post('/register', $userData);
-
+		$response->assertSessionDoesntHaveErrors();
 		$response->assertRedirect(route('verification.notice'));
 
 		$this->assertDatabaseHas('users', [
