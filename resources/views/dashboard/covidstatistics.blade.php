@@ -4,6 +4,8 @@
             <input type="text" name="search" placeholder="{{__('dashboard.Search_Ph')}}"
                 class="w-[15rem] h-[3.5rem] border rounded mt-[0.5rem] bg-transparent font-semibold text-sm"
                 value="{{ request('search') }}">
+            <input type="hidden" name="sort" value="{{ request('sort') }}" />
+            <input type="hidden" name="order" value="{{ request('order') }}" />
         </form>
 
             <div class="mobile:overflow-y-scroll scrollbar scrollbar-thumb-darkGray scrollbar-thumb-rounded-md scrollbar-w-[6px] scrollbar-h-[50px]  flex flex-row relative max-h-[37rem] mt-[2.5rem]  ">

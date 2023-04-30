@@ -24,7 +24,7 @@ class CovidStatistic extends Model
 				$query->where(function ($query) use ($search) {
 					$lang = session('locale', 'en');
 					if ($lang === 'ka') {
-						$query->whereRaw("json_extract(country, '$.en') like ?", ['%' . $search . '%']);
+						$query->whereRaw("json_extract(country, '$.ka') like ?", ['%' . $search . '%']);
 					} else {
 						$query->whereRaw("lower(json_extract(country, '$.en')) LIKE ?", ['%' . strtolower($search) . '%']);
 					}
@@ -44,7 +44,7 @@ class CovidStatistic extends Model
 			];
 
 			if (isset($column[$sort])) {
-				$query->orderByRaw("{$column[$sort]} $order");
+				$query->orderBy($column[$sort], $order);
 			}
 		});
 
