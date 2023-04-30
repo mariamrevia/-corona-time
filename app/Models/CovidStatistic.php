@@ -22,8 +22,12 @@ class CovidStatistic extends Model
 			$filters['search'] ?? false,
 			function ($query, $search) {
 				$query->where(function ($query) use ($search) {
-					$query->whereRaw("JSON_EXTRACT(country, '$.en') like ?", ['%' . $search . '%'])
-						->orWhereRaw("JSON_EXTRACT(country, '$.ka') like ?", ['%' . $search . '%']);
+					$lang = session('locale', 'en');
+					if ($lang === 'ka') {
+						$query->whereRaw("json_extract(country, '$.en') like ?", ['%' . $search . '%']);
+					} else {
+						$query->whereRaw("lower(json_extract(country, '$.en')) LIKE ?", ['%' . strtolower($search) . '%']);
+					}
 				});
 			}
 		);
@@ -33,7 +37,7 @@ class CovidStatistic extends Model
 			$order = request('order', 'asc');
 
 			$column = [
-				'name'      => "JSON_EXTRACT(country, '$.en')",
+				'name'      => "json_extract(country, '$.en')",
 				'deaths'    => 'deaths',
 				'recovered' => 'recovered',
 				'confirmed' => 'confirmed',

@@ -54,7 +54,7 @@
                             <tr class=" text-[20px] whitespace-wrap bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                 <th scope="row"
                                     class="px-2 py-4 white-space: pre-wrap font-medium text-gray-900   dark:text-white">
-                                     {{$statistic->getTranslation('country', session('locale', 'en')) }}
+                                     {{$statistic->getTranslation ('country', session('locale', 'en')) }}
                                 </th>
                                 <td class="px-2 py-4">
                                     {{ number_format($statistic->confirmed) }}

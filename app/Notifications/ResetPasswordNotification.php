@@ -11,9 +11,6 @@ class ResetPasswordNotification extends ResetPassword
 {
 	use Queueable;
 
-	/**
-	 * Create a new notification instance.
-	 */
 	public $verificationUrl;
 
 	public function __construct(string $verificationUrl)
@@ -31,24 +28,10 @@ class ResetPasswordNotification extends ResetPassword
 		return ['mail'];
 	}
 
-	/**
-	 * Get the mail representation of the notification.
-	 */
 	public function toMail($notifiable): ResetPasswordMail
 	{
 		return (new ResetPasswordMail($this->verificationUrl))
 		->to($notifiable->email)
 		->withVerificationUrl($this->verificationUrl);
-	}
-
-	/**
-	 * Get the array representation of the notification.
-	 *
-	 * @return array<string, mixed>
-	 */
-	public function toArray(object $notifiable): array
-	{
-		return [
-		];
 	}
 }

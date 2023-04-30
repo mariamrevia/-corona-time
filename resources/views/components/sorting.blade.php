@@ -2,7 +2,7 @@
 
 <div class="flex flex-col align-middle justify-center ml-[0.5rem] w-10">
     <a 
-        href="{{ request()->fullUrlWithQuery(['sort' => $name, 'order' => 'asc']) }}">
+        href="{{ request()->fullUrlWithQuery(['sort' => $name, 'order' => 'asc' ]) }}">
         <svg width="10" height="6" viewBox="0 0 10 6"
         fill="{{ request('sort') === $name && request('order') === 'asc' ? '#010414' : '#BFC0C4' }}"  
          xmlns="http://www.w3.org/2000/svg">
