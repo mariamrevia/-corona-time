@@ -29,8 +29,6 @@
                 </div>
             </div>
             </div>
-
-
             <x-error name="password" />
             <div class="mt-[1.5rem] flex flex-row justify-between">
                 <div>
@@ -45,16 +43,9 @@
             </div>
 
     </form>
-
     <div class="flex flex-row items-center mt-[1.5rem] justify-center">
         <p>{{ __('register.Account_Hint') }}</p>
         <a class="ml-[0.5rem] font-semibold" href="{{ route('login.show') }}">{{ __('register.Log_In') }}</a>
     </div>
-
-
     </div>
-
-
-
-
 </x-layout>

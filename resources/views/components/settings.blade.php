@@ -1,7 +1,7 @@
 
 <section class="mobile:mt-10 mt-[1.5rem] ml-[1rem]  mobile:ml-108 flex flex-col">
 
-    <h1 class=" font-bold mb-8 h-30 w-[20rem] text-[1.6rem]">
+    <h1 class="{{ App::getLocale() === 'en' ?  'text-[1.6rem]' : 'text-[1.2rem]' }} font-bold mb-8 h-30 w-[20rem]">
         {{ $heading }}
     </h1>
     
