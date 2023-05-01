@@ -1,6 +1,6 @@
 @props(['name'])
 
-<div class="flex flex-col align-middle justify-center ml-[0.5rem] w-10">
+<div class="flex flex-col align-middle justify-center ml-[0.5rem] w-5">
     <a 
         href="{{ request()->fullUrlWithQuery(['sort' => $name, 'order' => 'asc', 'search' => request('search')]) }}">
         <svg width="10" height="6" viewBox="0 0 10 6"

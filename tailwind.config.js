@@ -19,6 +19,7 @@ module.exports = {
       'blueO':'rgba(32, 41, 243, 0.08)',
       'green':"#0FBA68",
       'darkGray':"#808189",
+      'black':"#010414",
 
       'blue':"#2029F3",
       'yellow':' #EAD621'
