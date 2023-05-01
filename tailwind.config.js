@@ -19,13 +19,21 @@ module.exports = {
       'blueO':'rgba(32, 41, 243, 0.08)',
       'green':"#0FBA68",
       'darkGray':"#808189",
+      'black':"#010414",
+      'primaryBlue':'#2029F3',
 
       'blue':"#2029F3",
-      'yellow':' #EAD621'
+      'yellow':' #EAD621',
+      'shadow':'-3px 3px 0px #DBE8FB, -3px -3px 0px #DBE8FB, 3px -3px 0px #DBE8FB, 3px 3px 0px #DBE8FB, 3px 3px 0px #DBE8FB;'
 
       
     },
+
     extend: {
+       boxShadow:{
+        'shadow':'box-shadow: -3px 3px 0px #DBE8FB, -3px -3px 0px #DBE8FB, 3px -3px 0px #DBE8FB, 3px 3px 0px #DBE8FB, 3px 3px 0px #DBE8FB'
+
+       },
 
       margin: {
         '108': '108px',

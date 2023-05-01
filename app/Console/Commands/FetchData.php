@@ -44,10 +44,10 @@ class FetchData extends Command
 			CovidStatistic::updateOrCreate(
 				['code' => $country['code']],
 				[
-					'country'      => json_encode([
+					'country'      => [
 						'en' => $country['name']['en'],
 						'ka' => $country['name']['ka'],
-					]),
+					],
 					'code' => $country['code'],
 
 					'deaths'    => $stats['deaths'],

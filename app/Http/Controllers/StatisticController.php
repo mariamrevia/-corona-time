@@ -9,7 +9,7 @@ class StatisticController extends Controller
 	public function showStatistics(CovidStatistic $statistics)
 	{
 		$statistics = CovidStatistic::filter(
-			request(['search', 'sort'])
+			request(['search', 'sort', 'order'])
 		)->get();
 		return view(
 			'dashboard.covidstatistics',

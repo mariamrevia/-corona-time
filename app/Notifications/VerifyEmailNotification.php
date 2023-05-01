@@ -11,9 +11,8 @@ class VerifyEmailNotification extends VerifyEmail
 {
 	use Queueable;
 
-	/**
-	 * Create a new notification instance.
-	 */
+	public $verificationUrl;
+
 	public function __construct()
 	{
 	}
@@ -28,23 +27,10 @@ class VerifyEmailNotification extends VerifyEmail
 		return ['mail'];
 	}
 
-	/**
-	 * Get the mail representation of the notification.
-	 */
 	public function toMail($notifiable): EmailConfirmMail
 	{
 		$verificationUrl = $this->verificationUrl($notifiable);
-		return (new EmailConfirmMail($verificationUrl))->to($notifiable);
-	}
 
-	/**
-	 * Get the array representation of the notification.
-	 *
-	 * @return array<string, mixed>
-	 */
-	public function toArray(object $notifiable): array
-	{
-		return [
-		];
+		return (new EmailConfirmMail($verificationUrl))->to($notifiable);
 	}
 }

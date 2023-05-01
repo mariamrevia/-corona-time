@@ -11,5 +11,5 @@ return [
 	'Account_Q'           => 'Don’t have and account?',
 	'Sign_Up'             => 'Sign up for free',
 	'Username_Placeholder'=> 'Enter unique username or email',
-	'Password_Placeholder'=> 'Fill in password,',
+	'Password_Placeholder'=> 'Fill in password',
 ];
