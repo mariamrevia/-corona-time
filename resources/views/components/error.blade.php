@@ -1,4 +1,7 @@
 @props(['name'])
+
+
+
 @error($name)
     <div class="flex flex-row w-[400px] items-center mt-[5px]">
 

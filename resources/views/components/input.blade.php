@@ -8,8 +8,17 @@
 
 <div class="flex flex-col mobile:mt-[1.5rem] mt-[1rem]">
     <label class="font-bold" for='{{ $name }}'>{{ $text }}</label>
-    <input class="w-[21.4rem] h-[3.5rem] border rounded mt-[0.5rem] {{ $errorClass }} {{ $validClass }}"
-        name='{{ $name }}' id="{{ $name }}" {{ $attributes }} />
+    <div class="w-[21.4rem] h-[3.5rem] flex items-center border-[2px] rounded mt-[0.5rem] focus-within:border-primaryBlue  focus-within:ring focus:shadow-shadow {{ $errorClass }} {{ $validClass }}">
+<div class=" w-[21.4rem] flex flex-row items-center justify-center">
+    
+    <input class="w-[17rem] h-[3rem]  outline-none "
+        name='{{ $name }}' id="{{ $name }}" {{ $attributes }}  />
+        @if ($validClass)   
+        <img src="{{ asset('images/Vector1.png') }}" class="w-[20px] h-[20px]"  />
+        @endif
+</div>
+
+    </div>
     @if ($errors->has($name))
         <div class="flex flex-row w-[400px] items-center mt-[5px]">
 

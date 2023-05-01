@@ -17,7 +17,7 @@
                     <input type="checkbox"  name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} />
                     <label class="font-semibold text-[0.8rem]">{{__('login.Remember')}}</label>
                 </div>
-                <a href="{{route('verify.show')}}">{{__('login.Forget_Pass')}}</a>
+                <a class="text-primaryBlue font-medium" href="{{route('verify.show')}}">{{__('login.Forget_Pass')}}</a>
             </div>
 
             <div>
