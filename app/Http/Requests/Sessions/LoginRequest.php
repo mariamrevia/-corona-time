@@ -8,7 +8,7 @@ class LoginRequest extends FormRequest
 {
 	public function rules(): array
 	{
-		// ddd(request()->all());
+		
 		return [
 			'username' => 'required',
 			'password' => 'required',
