@@ -38,6 +38,7 @@ Route::middleware('guest')->group(function () {
 	Route::view('congrats', 'email.congrats')->name('congrats.show');
 	Route::view('reset/passw', 'email.verify')->name('verify.show');
 	Route::view('confirm', 'email.confirm')->name('confirm.show');
+	Route::view('reset-password/success', 'resetPassSuccesMsg')->name('successmsg.show');
 });
 
 Route::controller(PasswordResetController::class)->middleware('guest')->group(function () {
