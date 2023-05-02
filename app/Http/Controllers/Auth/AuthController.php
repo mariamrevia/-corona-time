@@ -39,7 +39,7 @@ class AuthController extends Controller
 		return redirect()->route('worldwide.show');
 	}
 
-	public function destroy()
+	public function destroy(): RedirectResponse
 	{
 		auth()->logout();
 		return redirect()->route('login.show');

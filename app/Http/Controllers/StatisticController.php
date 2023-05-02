@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\CovidStatistic;
+use Illuminate\Contracts\View\View;
 
 class StatisticController extends Controller
 {
-	public function showStatistics(CovidStatistic $statistics)
+	public function showStatistics(CovidStatistic $statistics): View
 	{
 		$statistics = CovidStatistic::filter(
 			request(['search', 'sort', 'order'])
@@ -20,14 +21,14 @@ class StatisticController extends Controller
 		);
 	}
 
-	public function showWorldwide()
+	public function showWorldwide(): View
 	{
 		return view('dashboard.worldwide', [
 			'totals'     => $this->SumData(),
 		]);
 	}
 
-	private function SumData()
+	private function SumData(): array
 	{
 		$totalDeaths = CovidStatistic::sum('deaths');
 		$totalConfirmed = CovidStatistic::sum('confirmed');
