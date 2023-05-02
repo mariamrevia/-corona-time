@@ -11,4 +11,5 @@ return [
 	'Save'             => 'SAVE CHANGES',
 	'Congrats'         => 'Your password has been updeted successfully',
 	'SIGN_In'          => 'SIGN IN',
+	'successmsg'       => 'Your password has been updeted successfully',
 ];
